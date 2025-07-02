@@ -34,6 +34,9 @@ body:has(.card[data-color="green"]:hover) {
     @apply font-semibold sm:text-3xl text-xl relative font-poppins;
   }
 
+  .text-shadow {
+    text-shadow: 7px 8px 5px rgb(38, 3, 77);
+  }
   
   .pink-gradient_text {
     background: linear-gradient(to right, #0293f4, #f80382);
