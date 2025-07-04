@@ -13,7 +13,7 @@ export function Sky({ isRotating, rotationDirection }) {
     if (isRotating) {
       skyRef.current.rotation.y += rotationDirection * 1.81 * delta; // Adjust the rotation speed as needed
     }
-  });
+  })
 
   return (
     <group
@@ -24,7 +24,7 @@ export function Sky({ isRotating, rotationDirection }) {
     >
       <primitive object={sky.scene} />
     </group>
-  );
+  )
 }
 
 export default Sky

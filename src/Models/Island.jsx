@@ -46,7 +46,7 @@ const Island = ({ isRotating, setIsRotating, currentStage, setCurrentStage, curr
             const clientX = event.touches ? event.touches[0].clientX : event.clientX;
             const delta = (clientX - lastX.current) / viewport.width;
 
-            islandRef.current.rotation.y += delta * 0.01 * Math.PI * 0.5;
+            islandRef.current.rotation.y += delta * 0.01 * Math.PI * 0.45;
             rotationSpeed.current = delta * 0.01 * Math.PI;
 
             const deltaX = clientX - lastX.current;  // calculate actual drag direction

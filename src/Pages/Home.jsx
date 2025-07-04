@@ -5,6 +5,7 @@ import Loader from '../Components/Loader'
 import Island from '../Models/Island'
 import Sky from '../Models/Sky'
 import Bee from '../Models/Bee'
+import HomeInfo from '../Components/HomeInfo'
 
 const Home = () => {
 const [isRotating, setIsRotating] = useState(false)
@@ -36,14 +37,15 @@ const adjustBeeForScreenSize = () => {
   let beeRotation = [0.05, 1.97, 0]; // initial rotation consistent across devices
 
   return [beeScreenPosition, beeScreenScale, beeRotation];
-};
+}
 
   const [beeScreenPosition, beeScreenScale, beeRotation] = adjustBeeForScreenSize()
 
   return (
     <section className='w-full h-screen relative'>
-      {/* <div className='absolute top-28 left-0 right-0 z-10 flex items-center justify-center'> */}
-        {/* <h1 className='text-5xl font-bold'>Welcome to My Portfolio</h1> */}
+      <div className='absolute top-28 left-0 right-0 z-10 flex items-center justify-center'>
+        {currentStage && <HomeInfo currentStage={currentStage} />}
+        </div>
         <Canvas className={`w-full h-full bg-transparent ${isRotating ? 'cursor-grabbing' : 'cursor-grab'}`}
           camera={{ near: 0.1, far: 1000, position: [0, 0, 5] }}>
 
@@ -76,7 +78,6 @@ const adjustBeeForScreenSize = () => {
             />
           </Suspense>
         </Canvas>
-      {/* </div> */}
     </section>
   )
 }
