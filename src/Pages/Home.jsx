@@ -8,40 +8,34 @@ import Bee from '../Models/Bee'
 
 const Home = () => {
 const [isRotating, setIsRotating] = useState(false)
+const [currentStage, setCurrentStage] = useState(null);
+const [beeFacingLeft, setBeeFacingLeft] = useState(true);
+
 
 const adjustIslandForScreenSize = () => {
   let screenScale = null
-  let screenPosition = [-1.18, -8.95, -7.15] // Default position for larger screens
-  let rotation = [0.51, 12.5, 0.01] // Default rotation
+  let screenPosition = [-2.68, -8.85, -5.05] // Default position for larger screens
+  let rotation = [0.51, 12.5, -0.01] // Default rotation
 
     if (window.innerWidth < 768) {
-      screenScale = [0.9, 0.9, 0.9]
-    }
-    else {
-      screenScale = [1, 1, 1]
+      screenScale = [0.6, 0.6, 0.6];  // Keep island visible but smaller on mobile
+    } else {
+      screenScale = [0.6, 0.6, 0.6];
     }
 
     return [screenPosition, screenScale, rotation]
   }
 
   const [screenPosition, screenScale, rotation] = adjustIslandForScreenSize()
+  
 
-  const adjustBeeForScreenSize = () => {
-    let beeScreenScale, beeScreenPosition
-    let beeRotation = [0, -10, 0] // Default rotation
+const adjustBeeForScreenSize = () => {
+  let beeScreenScale = [.7, 1, 1];   // consistent size across devices
+  let beeScreenPosition = [0.25, 0.05, -0.05];
+  let beeRotation = [0.05, 1.97, 0]; // initial rotation consistent across devices
 
-    if (window.innerWidth < 768) {
-      beeScreenScale = [1.5, 1.5, 1.5]
-      beeScreenPosition = [0, -1.5, 0] // Adjusted position for smaller screens
-      beeRotation = [0, 0, 0] // Adjusted rotation for smaller screens
-    }
-    else {
-      beeScreenScale = [0.5, 0.5, 0.5]
-      beeScreenPosition = [0, 0, 0] // Default position for larger screens
-    }
-
-    return [beeScreenPosition, beeScreenScale, beeRotation]
-  }
+  return [beeScreenPosition, beeScreenScale, beeRotation];
+};
 
   const [beeScreenPosition, beeScreenScale, beeRotation] = adjustBeeForScreenSize()
 
@@ -49,10 +43,12 @@ const adjustIslandForScreenSize = () => {
     <section className='w-full h-screen relative'>
       {/* <div className='absolute top-28 left-0 right-0 z-10 flex items-center justify-center'> */}
         {/* <h1 className='text-5xl font-bold'>Welcome to My Portfolio</h1> */}
-        <Canvas className={`w-full h-full bg-transparent ${isRotating ? 'cursor-Grabbong' : 'cursor-grab'}`}
+        <Canvas className={`w-full h-full bg-transparent ${isRotating ? 'cursor-grabbing' : 'cursor-grab'}`}
           camera={{ near: 0.1, far: 1000, position: [0, 0, 5] }}>
 
           <Suspense fallback={<Loader />}>
+              <ambientLight intensity={1} />
+              <directionalLight position={[5, 0, -2]} intensity={5.05} />
             <Sky />
             <Island 
               position={screenPosition}
@@ -60,8 +56,13 @@ const adjustIslandForScreenSize = () => {
               rotation={rotation}
               isRotating={isRotating}
               setIsRotating={setIsRotating}
+              currentStage={currentStage}
+              setCurrentStage={setCurrentStage}
+              beeFacingLeft={beeFacingLeft}
+              setBeeFacingLeft={setBeeFacingLeft}
             />
             <Bee 
+              beeFacingLeft={beeFacingLeft}
               isRotating={isRotating}
               scale={beeScreenScale}
               position={beeScreenPosition}

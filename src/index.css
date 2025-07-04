@@ -39,7 +39,7 @@ body:has(.card[data-color="green"]:hover) {
   }
   
   .pink-gradient_text {
-    background: linear-gradient(to right, #0293f4, #f80382);
+    background: linear-gradient(to right, #000000, #6c014c);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
