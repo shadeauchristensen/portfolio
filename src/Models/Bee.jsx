@@ -40,7 +40,7 @@ const Bee = ({ beeFacingLeft, isRotating, position, scale, rotation, ...props })
     >
       <primitive object={scene} />
     </a.group>
-  );
-};
+  )
+}
 
 export default Bee
