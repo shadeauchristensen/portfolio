@@ -10,6 +10,7 @@ const Home = () => {
 const [isRotating, setIsRotating] = useState(false)
 const [currentStage, setCurrentStage] = useState(null);
 const [beeFacingLeft, setBeeFacingLeft] = useState(true);
+const [rotationDirection, setRotationDirection] = useState(0);
 
 
 const adjustIslandForScreenSize = () => {
@@ -48,8 +49,12 @@ const adjustBeeForScreenSize = () => {
 
           <Suspense fallback={<Loader />}>
               <ambientLight intensity={1} />
-              <directionalLight position={[5, 0, -2]} intensity={5.05} />
-            <Sky />
+              <directionalLight position={[0, 0, -2]} intensity={5.05} />
+            <Sky 
+              isRotating={isRotating}
+              rotationDirection={rotationDirection}
+              // setRotationDirection={setRotationDirection}
+            />
             <Island 
               position={screenPosition}
               scale={screenScale}
@@ -60,6 +65,7 @@ const adjustBeeForScreenSize = () => {
               setCurrentStage={setCurrentStage}
               beeFacingLeft={beeFacingLeft}
               setBeeFacingLeft={setBeeFacingLeft}
+              setRotationDirection={setRotationDirection} 
             />
             <Bee 
               beeFacingLeft={beeFacingLeft}

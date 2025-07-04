@@ -1,16 +1,28 @@
-import { useGLTF } from '@react-three/drei'
-import React from 'react'
+import { useRef } from "react";
+import { useGLTF } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
 
+import skyScene from "../baker_and_the_bridge/free_-_skybox_fantasy_town.glb";
 
-import skyScene from '../baker_and_the_bridge/free_-_skybox_fantasy_town.glb'
-
-const Sky = () => {
+export function Sky({ isRotating, rotationDirection }) {
   const sky = useGLTF(skyScene);
+  const skyRef = useRef();
+
+  // 'delta' represents the time in seconds since the last frame.
+  useFrame((_, delta) => {
+    if (isRotating) {
+      skyRef.current.rotation.y += rotationDirection * 1.81 * delta; // Adjust the rotation speed as needed
+    }
+  });
+
   return (
-    <group scale={[-1, 0.8, -0.2]}
-        position={[0, 0.5, 0]}
-        rotation={[0.17, 0, 0]}>
-        <primitive object={sky.scene} />
+    <group
+      ref={skyRef}
+      scale={[-0.5, 0.85, -0.59]}
+      position={[0, 0.5, -100]}
+      rotation={[0.17, 0, 0]}
+    >
+      <primitive object={sky.scene} />
     </group>
   );
 }

@@ -13,7 +13,7 @@ Title: Baker and the Bridge
 
 import islandScene from '../baker_and_the_bridge/scene.gltf';
 
-const Island = ({ isRotating, setIsRotating, currentStage, setCurrentStage, currentFocusPoint, setBeeFacingLeft, ...props }) => {
+const Island = ({ isRotating, setIsRotating, currentStage, setCurrentStage, currentFocusPoint, setBeeFacingLeft, setRotationDirection,...props }) => {
     const islandRef = useRef()
 
     const { gl, viewport } = useThree()
@@ -21,7 +21,7 @@ const Island = ({ isRotating, setIsRotating, currentStage, setCurrentStage, curr
 
     const lastX = useRef(0.1)
     const rotationSpeed = useRef(0.1)
-    const dampingFactor = 0.95
+    const dampingFactor = 0.85
 
     const handlePointerDown = (event) => {
         event.stopPropagation()
@@ -46,16 +46,17 @@ const Island = ({ isRotating, setIsRotating, currentStage, setCurrentStage, curr
             const clientX = event.touches ? event.touches[0].clientX : event.clientX;
             const delta = (clientX - lastX.current) / viewport.width;
 
-            islandRef.current.rotation.y += delta * 0.01 * Math.PI;
+            islandRef.current.rotation.y += delta * 0.01 * Math.PI * 0.5;
             rotationSpeed.current = delta * 0.01 * Math.PI;
 
             const deltaX = clientX - lastX.current;  // calculate actual drag direction
             if (deltaX > 0) {
-            setBeeFacingLeft(true); // moving right ➡️ face right
+            setBeeFacingLeft(false); // moving right ➡️ face right
             } else if (deltaX < 0) {
-            setBeeFacingLeft(false);  // moving left ⬅️ face left
+            setBeeFacingLeft(true);  // moving left ⬅️ face left
             }
 
+            setRotationDirection(Math.sign(deltaX)); // NEW: tell Sky the drag direction
             lastX.current = clientX; // update tracker
         }
     }

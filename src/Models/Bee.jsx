@@ -1,10 +1,9 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { useAnimations, useGLTF } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { a } from '@react-spring/three';
 
 import beeScene from '../bumblebee/scene.gltf';
-import { useActionData } from 'react-router-dom';
 
 const Bee = ({ beeFacingLeft, isRotating, position, scale, rotation, ...props }) => {
   const beeRef = useRef();
@@ -13,18 +12,33 @@ const Bee = ({ beeFacingLeft, isRotating, position, scale, rotation, ...props })
 
   // Animate bee rotation with a subtle hover effect
   useFrame((state) => {
-  if (beeRef.current) {
-    const idleWobble = Math.sin(state.clock.elapsedTime * 10) * 0.003;
+    if (beeRef.current) {
+      const idleWobble = Math.sin(state.clock.elapsedTime * 8) * 0.003;
 
-    if (isRotating) {
-      // Face direction AND idle animation
-      beeRef.current.rotation.y = (beeFacingLeft ? Math.PI / 1 : -Math.PI / 10) + idleWobble;
-    } else {
-      // Maintain current facing, only idle animation
-      beeRef.current.rotation.y += idleWobble; 
+      if (isRotating) {
+        // Face direction AND idle animation
+        beeRef.current.rotation.y = (beeFacingLeft ? Math.PI / 1.15 : -Math.PI / 10) + idleWobble;
+      } else {
+        // Maintain current facing, only idle animation
+        beeRef.current.rotation.y += idleWobble; 
+      }
     }
-  }
-})
+  })
+
+  useEffect(() => {
+  const flyAction = actions['Fly'];
+
+    if (flyAction) {
+      flyAction.play()
+      flyAction.setEffectiveTimeScale(1) // default speed
+
+      if (isRotating) {
+        flyAction.setEffectiveTimeScale(1.75) // speed up when rotating
+      } else {
+        flyAction.setEffectiveTimeScale(0.65) // normal speed when idle
+      }
+    }
+  }, [actions, isRotating])
 
   return (
     <a.group
@@ -36,7 +50,7 @@ const Bee = ({ beeFacingLeft, isRotating, position, scale, rotation, ...props })
         scale[2],
       ]}
       rotation={rotation}
-      {...props}
+      {...props} beeRef={beeRef}
     >
       <primitive object={scene} />
     </a.group>
