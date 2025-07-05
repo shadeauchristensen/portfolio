@@ -16,7 +16,7 @@ const [rotationDirection, setRotationDirection] = useState(0);
 
 const adjustIslandForScreenSize = () => {
   let screenScale = null
-  let screenPosition = [-2.68, -8.85, -5.05] // Default position for larger screens
+  let screenPosition = [-2.08, -4.855, -12.05] // Default position for larger screens
   let rotation = [0.51, 12.5, -0.01] // Default rotation
 
     if (window.innerWidth < 768) {
@@ -34,7 +34,7 @@ const adjustIslandForScreenSize = () => {
 const adjustBeeForScreenSize = () => {
   let beeScreenScale = [.7, 1, 1];   // consistent size across devices
   let beeScreenPosition = [0.25, 0.05, -0.05];
-  let beeRotation = [0.05, 1.97, 0]; // initial rotation consistent across devices
+  let beeRotation = [0.0, -0.35, -0.05]; // initial rotation consistent across devices
 
   return [beeScreenPosition, beeScreenScale, beeRotation];
 }

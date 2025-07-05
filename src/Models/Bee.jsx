@@ -13,11 +13,11 @@ const Bee = ({ beeFacingLeft, isRotating, position, scale, rotation, ...props })
   // Animate bee rotation with a subtle hover effect
   useFrame((state) => {
     if (beeRef.current) {
-      const idleWobble = Math.sin(state.clock.elapsedTime * 8) * 0.003;
+      const idleWobble = Math.sin(state.clock.elapsedTime * 5) * 0.003;
 
       if (isRotating) {
         // Face direction AND idle animation
-        beeRef.current.rotation.y = (beeFacingLeft ? Math.PI / 1.15 : -Math.PI / 10) + idleWobble;
+        beeRef.current.rotation.y = (beeFacingLeft ? Math.PI / 1.45 : -Math.PI / 6) + idleWobble;
       } else {
         // Maintain current facing, only idle animation
         beeRef.current.rotation.y += idleWobble; 
@@ -30,7 +30,7 @@ const Bee = ({ beeFacingLeft, isRotating, position, scale, rotation, ...props })
 
     if (flyAction) {
       flyAction.play()
-      flyAction.setEffectiveTimeScale(1) // default speed
+      flyAction.setEffectiveTimeScale(0.65) // default speed
 
       if (isRotating) {
         flyAction.setEffectiveTimeScale(1.75) // speed up when rotating
