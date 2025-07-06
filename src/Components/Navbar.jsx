@@ -14,8 +14,8 @@ const Navbar = () => {
         event.preventDefault(); //Fixed the issue of bug not loading the home page properly // This prevents the default link behavior
         handleHomeClick(); // This makes it so every time you click your home link, the page fully reload
       }}
-      className="w-fit bg-transparent px-2 py-1 hover:animate-bounce hover:scale-105 hover:shadow-lg transition-colors duration-200 hover:bg-blue-400 hover:text-white flex items-center gap-2">
-        <p className="text-white font-bold">Shadeau Christensen</p>
+      className="w-fit bg-transparent text-lg px-2 py-1 hover:animate-bounce hover:scale-105 hover:shadow-lg transition-colors duration-200 hover:bg-blue-400 hover:text-white flex items-center gap-2">
+        <p className="text-white font-bold">Home</p>
       </NavLink>
       <nav className="flex text-lg gap-4 font-semibold">
         <NavLink to='/about' className={({ isActive }) => (isActive ? "text-white" : "text-white hover:text-blue-400") + " transition-colors duration-200  hover:bg-blue-400 hover:text-white flex px-6 py-3 items-center gap-2 hover:animate-bounce hover:scale-110 hover:shadow-lg"}>

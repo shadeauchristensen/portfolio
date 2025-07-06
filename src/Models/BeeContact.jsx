@@ -9,7 +9,7 @@ Title: Bumblebee
 import React, { useEffect, useRef } from 'react'
 import { useGLTF, useAnimations } from '@react-three/drei'
 
-import scene from '../bumblebee/scene.gltf'
+import scene from '../assets/bumblebee/scene.gltf'
 
 
 const BeeContact = ({ currentAnimation, ...props }) => {
@@ -23,6 +23,7 @@ const BeeContact = ({ currentAnimation, ...props }) => {
     const action = actions[currentAnimation];
     if (action) {
         action.reset().fadeIn(0.05).play();
+        action.timeScale = 0.5; // Adjust speed if needed
         return () => action.fadeOut(0.05);
     }
     }, [actions, currentAnimation]);

@@ -39,7 +39,7 @@ body:has(.card[data-color="green"]:hover) {
   }
   
   .pink-gradient_text {
-    background: linear-gradient(to right, #fa03e1, #0267ff);
+    background: linear-gradient(to right, #fa03e180, #1c77ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -53,7 +53,7 @@ body:has(.card[data-color="green"]:hover) {
   }
 
   .btn {
-    @apply text-white bg-gradient-to-b from-[#69abf6] to-[#f700ffa4] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center;
+    @apply text-white bg-gradient-to-b from-[#69abf6] to-[#f700ff88] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center;
   }
 
   .header {

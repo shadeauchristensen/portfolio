@@ -3,7 +3,7 @@ import { useAnimations, useGLTF } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { a } from '@react-spring/three';
 
-import beeScene from '../bumblebee/scene.gltf';
+import beeScene from '../assets/bumblebee/scene.gltf';
 
 const Bee = ({ beeFacingLeft, isRotating, position, scale, rotation, ...props }) => {
   const beeRef = useRef();
