@@ -1,12 +1,14 @@
 import React from 'react'
 
+import skills from '../Data/skills.jsx'
+
 const About = () => {
   return (
     <section className="max-container mx-auto px-2 py-6">
-      <h1 className="head-text">About
-      Hello, I'm <span className="pink-gradient_text font-semibold drop-shadow-md">Shadeau Christensen</span>, a full-stack developer and 3D creator.</h1>
+      <h1 className="head-text">
+      Hello, I'm <span className="pink-gradient_text font-semibold drop-shadow-md">Shadeau Christensen</span>,<br /> a full-stack developer and 3D creator.</h1>
 
-      <div className="mt-8 text-gray-400 dark:text-gray-800">
+      <div className="mt-8 text-slate-400 dark:text-slate-800">
         <p>
           I specialize in building dynamic full-stack web applications and creating immersive 3D models and experiences. With a passion for both front-end and back-end development, I enjoy crafting solutions that are not only functional but also visually appealing.
         </p>
@@ -21,19 +23,28 @@ const About = () => {
           <li>API Development</li>
         </ul>
         <div>
-          <p className='subhead-text'>
+          <p className='subhead-text py-10'>
             I am proficient in a wide range of technologies and tools, including:
           </p>
-          <ul className="py-8 list-disc list-inside mt-2">
-            <li>Languages & Frameworks: JavaScript (ES6+), Ruby, HTML5, CSS3, React, Rails</li>
-            <li>Databases & ORMs: PostgreSQL, SQL, ActiveRecord</li>
-            <li>APIs & Data: RESTful APIs, JSON, third-party API integration</li>
-            <li>Testing & Tools: RSpec, Cypress, FactoryBot, Git, Postman, Render, Vite</li>
-            <li>3D Modeling & Animation: Blender, Unreal Engine, React Three Fiber, Drei, GLTF workflows</li>
-            <li>UI & Design: Tailwind CSS, responsive design, interactive animations</li>
-            <li>Build & Deployment: Vite, Render, Netlify</li>
-            <li>Documentation & Planning: Markdown, GitHub Projects, professional README authoring</li>
-          </ul>
+          <div className="py-20 space-y-12">
+            {skills.map((group) => (
+              <div key={group.category}>
+                <h3 className="subhead-text mb-2 text-center">{group.category}</h3>
+                <p className="text-sm mb-4 text-slate-500 dark:text-slate-400">{group.description}</p>
+
+                <div className="flex flex-wrap gap-6 justify-center">
+                  {group.items.map((skill) => (
+                    <div key={skill.name} className="flex flex-col items-center w-24">
+                      <div className="bg-slate-100 rounded-xl p-4 shadow-md cursor-pointer transform hover:scale-110 transition duration-300 flex justify-center items-center w-20 h-20">
+                        {skill.icon}
+                      </div>
+                      <span className="text-xs mt-2 text-center dark:text-gray-500">{skill.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
