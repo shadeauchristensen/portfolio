@@ -9,8 +9,8 @@ import HomeInfo from '../Components/HomeInfo'
 
 import mixkit from '../assets/mixkit-brutal-mind-1090.mp3'
 
-import SoundOn from '../assets/baker_and_the_bridge/audio/SoundOn.png';
-import SoundOff from '../assets/baker_and_the_bridge/audio/SoundOff.png';
+import SoundOn from '../assets/audio/SoundOn.png';
+import SoundOff from '../assets/audio/SoundOff.png';
 
 const Home = () => {
   const audioRef = useRef(new Audio(mixkit))
@@ -20,30 +20,31 @@ const [isRotating, setIsRotating] = useState(false)
 const [currentStage, setCurrentStage] = useState(null);
 const [beeFacingLeft, setBeeFacingLeft] = useState(true);
 const [rotationDirection, setRotationDirection] = useState(0);
-const [audioPlaying, setAudioPlaying] = useState(true);
+const [audioPlaying, setAudioPlaying] = useState(false);
 
 useEffect(() => {
-  const handleUserInteraction = () => {
+  const audio = audioRef.current;
+
+  const handlePlay = () => {
     if (audioPlaying) {
-      audioRef.current.play().catch(err => {
-        console.error("Audio play failed:", err);
+      audio.play().catch((err) => {
+        console.error("Autoplay failed:", err);
       });
+    } else {
+      audio.pause();
     }
-    // Once played, we don't need to listen again
-    window.removeEventListener('click', handleUserInteraction);
   };
 
-  window.addEventListener('click', handleUserInteraction);
+  handlePlay(); // initial try on mount or state change
 
   return () => {
-    window.removeEventListener('click', handleUserInteraction);
+    audio.pause();
   };
 }, [audioPlaying]);
 
-
 const adjustIslandForScreenSize = () => {
   let screenScale = null
-  let screenPosition = [-2.08, -4.855, -12.55] // Default position for larger screens
+  let screenPosition = [-1.95, -7.95, -9.55] // Default position for larger screens
   let rotation = [0.51, 12.5, -0.01] // Default rotation
 
     if (window.innerWidth < 768) {
@@ -59,9 +60,9 @@ const adjustIslandForScreenSize = () => {
   
 
 const adjustBeeForScreenSize = () => {
-  let beeScreenScale = [.7, 1, 1];   // consistent size across devices
+  let beeScreenScale = [0.7, 1, 1];   // consistent size across devices
   let beeScreenPosition = [0.25, -0.55, 0.05];
-  let beeRotation = [0.0, -0.73, -0.05]; // initial rotation consistent across devices
+  let beeRotation = [-0.05, -0.03, -0.05]; // initial rotation consistent across devices
 
   return [beeScreenPosition, beeScreenScale, beeRotation];
 }

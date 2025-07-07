@@ -1,6 +1,7 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { Home, About, Projects, Contact } from './Pages';
 import Navbar from './Components/Navbar';
+import './assets/assets'; // Import all texture assets
 
 const App = () => {
   return (

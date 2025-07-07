@@ -9,7 +9,7 @@ Title: Bumblebee
 import React, { useEffect, useRef } from 'react'
 import { useGLTF, useAnimations } from '@react-three/drei'
 
-import scene from '../assets/bumblebee/scene.gltf'
+import scene from '/models/bumblebee/bee_scene.gltf'
 
 
 const BeeContact = ({ currentAnimation, ...props }) => {

@@ -3,7 +3,7 @@ import { useAnimations, useGLTF } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { a } from '@react-spring/three';
 
-import beeScene from '../assets/bumblebee/scene.gltf';
+import beeScene from '/models/bumblebee/bee_scene.gltf';
 
 const Bee = ({ beeFacingLeft, isRotating, position, scale, rotation, ...props }) => {
   const beeRef = useRef();
@@ -13,11 +13,11 @@ const Bee = ({ beeFacingLeft, isRotating, position, scale, rotation, ...props })
   // Animate bee rotation with a subtle hover effect
   useFrame((state) => {
     if (beeRef.current) {
-      const idleWobble = Math.sin(state.clock.elapsedTime * 5) * 0.003;
+      const idleWobble = Math.sin(state.clock.elapsedTime * 6) * 0.006;
 
       if (isRotating) {
         // Face direction AND idle animation
-        beeRef.current.rotation.y = (beeFacingLeft ? Math.PI / 1.45 : -Math.PI / 6) + idleWobble;
+        beeRef.current.rotation.y = (beeFacingLeft ? Math.PI / 1.55 : -Math.PI / 6) + idleWobble;
       } else {
         // Maintain current facing, only idle animation
         beeRef.current.rotation.y += idleWobble; 

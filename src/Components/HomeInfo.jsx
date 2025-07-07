@@ -5,12 +5,20 @@ import { Link } from "react-router-dom";
 // import "../index.css";
 
 const InfoBox = ({ text, link, btnText }) => (
-  <div className="info-box font-medium text-center max-w-[500px] mx-auto p-4 sm:p-3">
-    <p className="mb-4 text-base sm:text-sm ">{text}</p>
+  <div className="info-box font-medium text-center 
+    w-[90%] sm:max-w-[600px] mx-auto 
+    px-4 py-3 sm:p-6 
+    bg-white/80 rounded-xl shadow-md max-h-[90vh] overflow-y-auto"
+  >
+    <p className="mb-3 text-sm sm:text-base leading-snug">
+      {text}
+    </p>
     {link && btnText && (
       <Link
         to={link}
-        className="btn transform transition-transform duration-300 hover:scale-105 hover:shadow-lg"
+        className="btn mt-2 text-sm sm:text-base px-4 py-2 
+    transform transition-transform duration-300 
+    hover:scale-105 hover:shadow-lg"
       >
         {btnText}
       </Link>
@@ -26,8 +34,9 @@ const renderContent = {
         <br />
         Hey there! I’m Shadeau! Once a restaurant manager, now a full-stack developer and 3D creator with a love for crafting eye-catching, user-friendly digital worlds and experiences.
         <br />
-        <span className="italic">
-          Use your <span className="font-bold">mouse</span> or <span className="font-bold">tap those arrow keys</span> to fly the bee around this 3D island and learn more!
+        <br />
+        <span className="font-semibold italic">
+          Use the left click on your <span className="font-bold">mouse and drag or use your finger if you're on a touch device</span> or <span className="font-bold">tap those arrow keys</span> on your keyboard to fly the bee around this 3D island and learn more!
         </span>
       </>
     }
@@ -41,6 +50,7 @@ const renderContent = {
         <>
           <br />
           Wondering what kind of magic I can whip up? I’ve got a knack for tackling tough problems, leading high-stress teams with a smile, and turning big ideas into dazzling full-stack creations.
+          <br />
           <br />
           <span className="italic">
             Still with me? Awesome! Check out my <span className="font-semibold">portfolio</span> to see some of the cool stuff I’ve built!
@@ -58,6 +68,7 @@ const renderContent = {
         <>
           <br />
           Ready to make something awesome together? I thrive on curiosity, creativity, and teaming up to turn wild ideas into real experiences. If you’re after someone who brings big energy and a fresh perspective, let’s chat!
+          <br />
           <br />
           <span className="text-lg font-bold">
             Follow me and let’s connect and explore the possibilities!

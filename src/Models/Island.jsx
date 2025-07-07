@@ -11,13 +11,13 @@ Source: https://sketchfab.com/3d-models/baker-and-the-bridge-da3f6e7b85ed44b7aa8
 Title: Baker and the Bridge
 */
 
-import islandScene from '../assets/baker_and_the_bridge/scene.gltf';
+import islandScene from '/models/baker_and_the_bridge/island_scene.gltf';
 
 const Island = ({ isRotating, setIsRotating, currentStage, setCurrentStage, currentFocusPoint, setBeeFacingLeft, setRotationDirection,...props }) => {
     const islandRef = useRef()
 
-    const { gl, viewport } = useThree()
     const { nodes, materials } = useGLTF(islandScene)
+    const { gl, viewport } = useThree()
 
     const lastX = useRef(0.1)
     const rotationSpeed = useRef(0.1)
