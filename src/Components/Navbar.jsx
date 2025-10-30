@@ -11,7 +11,7 @@ const Navbar = () => {
   };
   
   return (
-    <header className="w-full fixed left-0 top-0 bg-gradient-to-t from-blue-400 to-pink-700 py-2 px-4 flex flex-wrap md:flex-nowrap items-center justify-between shadow-lg z-50">
+    <header className="w-full fixed left-0 top-0 bg-gradient-to-t from-blue-400 to-pink-700 py-1 px-4 flex flex-wrap md:flex-nowrap items-center justify-between shadow-lg z-50">
       <NavLink
         to="/"
         onClick={(event) => {

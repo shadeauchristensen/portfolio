@@ -6,11 +6,11 @@ const About = () => {
   return (
     <section className="max-container mx-auto px-2 py-6">
       <h1 className="head-text">
-      Hello, I'm <span className="pink-gradient_text font-semibold drop-shadow-md">Shadeau Christensen</span>,<br /> a full-stack developer and 3D creator.</h1>
+      Hello, I'm <span className="pink-gradient_text font-semibold drop-shadow-md">Shadeau Christensen</span>,<br /> a Full-Stack Developer, Web Designer and 3D creator.</h1>
 
       <div className="mt-8 text-slate-400 dark:text-slate-800">
         <p>
-          I specialize in building dynamic full-stack web applications and creating immersive 3D models and experiences. With a passion for both front-end and back-end development, I enjoy crafting solutions that are not only functional but also visually appealing.
+          I specialize in building full-stack web applications and creating immersive 3D models and experiences. With a passion for both front-end and back-end development, I enjoy crafting solutions that are not only functional but also visually appealing.
         </p>
       </div>
 
@@ -23,10 +23,10 @@ const About = () => {
           <li>API Development</li>
         </ul>
         <div>
-          <p className='subhead-text py-10'>
+          <p className='subhead-text py-11 text-center'>
             I am proficient in a wide range of technologies and tools, including:
           </p>
-          <div className="py-20 space-y-12">
+          <div className="py-220 space-y-12">
             {skills.map((group) => (
               <div key={group.category}>
                 <h3 className="subhead-text mb-2 text-center">{group.category}</h3>

@@ -11,13 +11,13 @@ const Projects = () => {
 
       <div className="px-2 py-5 md:px-4 lg:px-8 text-slate-500 dark:text-slate-800">
         <p>
-          Here are some of the projects I've worked on. Each project showcases my skills in web development, design, and problem-solving. Feel free to explore them to see how I approach challenges and create solutions.
+          Here are some of the projects I've worked on that I am most proud of. Each project showcases my skills in web development, design, and problem-solving. Feel free to explore them to see how I approach challenges and create solutions.
         </p>
       </div>
 
       <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition duration-300">
         {projects.map((project) => (
-          <div key={project.name} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 hover:bg-yellow-20 transition-transform duration-300 mb-8">
+          <div key={project.name} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 hover:bg-pink-100 transition-transform duration-300 mb-8 justify-center">
             <h3 className="text-xl font-bold mb-3">
               <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
                 {project.name}

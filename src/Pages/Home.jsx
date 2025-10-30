@@ -44,13 +44,13 @@ useEffect(() => {
 
 const adjustIslandForScreenSize = () => {
   let screenScale = null
-  let screenPosition = [-1.95, -7.95, -9.55] // Default position for larger screens
-  let rotation = [0.51, 12.5, -0.01] // Default rotation
+  let screenPosition = [-1.95, -12.95, -9.55] // Default position for larger screens
+  let rotation = [0.61, 12.5, -0.01] // Default rotation
 
     if (window.innerWidth < 768) {
       screenScale = [0.6, 0.6, 0.6];  // Keep island visible but smaller on mobile
     } else {
-      screenScale = [0.6, 0.6, 0.6];
+      screenScale = [0.96, 0.96, 0.6];
     }
 
     return [screenPosition, screenScale, rotation]
@@ -60,9 +60,9 @@ const adjustIslandForScreenSize = () => {
   
 
 const adjustBeeForScreenSize = () => {
-  let beeScreenScale = [0.7, 1, 1];   // consistent size across devices
+  let beeScreenScale = [0.87, 1, 1];   // consistent size across devices
   let beeScreenPosition = [0.25, -0.55, 0.05];
-  let beeRotation = [-0.05, -0.03, -0.05]; // initial rotation consistent across devices
+  let beeRotation = [-0.05, -0.03, -0.05]; // initial rotation consistent across devices for bee
 
   return [beeScreenPosition, beeScreenScale, beeRotation];
 }
@@ -106,7 +106,7 @@ const adjustBeeForScreenSize = () => {
             />
           </Suspense>
         </Canvas>
-        <div className='absolute bottom-8 left-6'>
+        <div className='absolute bottom-8 left-16 border-2 border-pink-500 rounded-full p-2 z-10 bg-white bg-opacity-50'>
           <img src={!audioPlaying ? SoundOff : SoundOn} alt="Sound Toggle" className='w-10 h-10 object-contain' onClick={() => setAudioPlaying(!audioPlaying)} />
         </div>
     </section>
